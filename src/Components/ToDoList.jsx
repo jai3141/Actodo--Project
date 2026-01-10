@@ -1,22 +1,11 @@
 import React, { useState } from 'react'
 import TodoItem from './TodoItem'
 
-const ToDoList = () => {
-
-    const[activityArr,setactivityArr] = useState([
-        {
-            id : 1,
-            activity: "Go for a Walk"
-        },
-        {
-            id:2,
-            activity:"Have a breakfast"
-        },
-        {
-            id:3,
-            activity:"Take a Shower"
-        }
-    ])
+const ToDoList = (props) => {
+       
+    const activityArr = props.activityArr
+    const setactivityArr = props.setactivityArr
+   
     return (
         <div className='bg-[#BDB4EA] p-2 border rounded-md flex-auto'>
             <h1 className='text-2xl font-medium'>Today's Activity</h1>

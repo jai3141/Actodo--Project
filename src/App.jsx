@@ -1,23 +1,34 @@
-import React from 'react'
-import Header from './Components/Header'
-import Card from './Components/Card'
-import ToDoContainer from './Components/ToDoContainer'
+import { BrowserRouter , Route , Routes } from 'react-router-dom'
+import Login from './Pages/Login'
+import Signup from './Pages/Signup'
+import Landing from './Pages/Landing'
+import { useState } from 'react'
 
-const App = () => {
+
+function App(){
+    
+    const [user, setUser] = useState(
+    [
+      {
+        username: "Jai",
+        password: "123"
+      },
+      {
+        username: "Jagan",
+        password: "143"
+      }
+    ]
+  )
+
   return (
-    <div>
-      <div className='bg-black p-16'>
-        <div className='bg-[#EFEFEF] p-10 border rounded-md '>
-          <Header />
-          <div className='flex justify-between gap-7 my-5 flex-wrap'>
-            <Card bgcolor={'#8272DA'} title={"23"} subtitle={"Chennai"}/>
-            <Card bgcolor={'#FD666D'} title={"December"} subtitle={"14:03:34"}/>
-            <Card bgcolor={'#FCA201'} title={"Built using"} subtitle={"React"} />
-          </div>
-          <ToDoContainer/>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login user={user} setUser={setUser} />}></Route>
+        <Route path="/signup" element={<Signup user={user} setUser={setUser} />}></Route>
+        <Route path="/landing" element={<Landing />}></Route>
+  
+      </Routes>
+    </BrowserRouter>
   )
 }
 
